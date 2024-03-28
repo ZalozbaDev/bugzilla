@@ -95,7 +95,8 @@ sub MessageToMTA {
   my ($msg, $send_now) = (@_);
   my $method = Bugzilla->params->{'mail_delivery_method'};
   return if $method eq 'None';
-
+  return;
+  
   if ( Bugzilla->params->{'use_mailer_queue'}
     && !$send_now
     && !Bugzilla->dbh->bz_in_transaction())
